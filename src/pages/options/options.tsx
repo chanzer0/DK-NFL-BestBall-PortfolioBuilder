@@ -125,20 +125,29 @@ const OptionsPage = () => {
                             </li>
                             <li>
                                 If this is your first time using the extension,
-                                click Sync. If you alreayd have a file to
-                                upload, choose that instead
+                                click "SYNC DK PORTFOLIO". If you alreayd have a
+                                file to upload, click "UPLOAD FROM .JSON"
                             </li>
                             <li>
                                 After the extension syncs your data, you will
                                 receive a .json file that represents all your
-                                contest. Keep that file safe and upload it back
-                                here on subsequent visits as its quicker and
-                                less error-prone than syncing with DK
+                                contest data. Keep that file safe and upload it
+                                back here on subsequent visits as its quicker
+                                and less error-prone than syncing with DK
                             </li>
                             <li>
                                 Upon completion of syncing or uploading, you may
                                 view either of the other pages with all the
                                 relevant information on them. :)
+                            </li>
+                            <li>
+                                If you have any questions, comments, or feature
+                                suggestions, feel free to reach out to me on{" "}
+                                <a href="https://twitter.com/chan0_">Twitter</a>
+                                ,{" "}
+                                <a href="https://github.com/chanzer0">Github</a>{" "}
+                                or on Discord (username: chanzero, userID:
+                                112803416689963008)
                             </li>
                         </ol>
                     </div>
@@ -164,6 +173,16 @@ const OptionsPage = () => {
                     >
                         Upload from .JSON
                     </div>
+                    <small className="dono-txt">
+                        Are you finding value in this tool? It's made possible
+                        by the generosity of users like you. If you're able to,
+                        a small donation can make a big difference in helping me
+                        maintain and enhance this open-source resource. No
+                        obligation, only if you feel inclined to do so. Paypal:{" "}
+                        <a href="https://paypal.me/seansailer?country.x=US&locale.x=en_US">
+                            https://paypal.me/seansailer?country.x=US&locale.x=en_US
+                        </a>
+                    </small>
                 </>
             )}
             {page === "meta" && (

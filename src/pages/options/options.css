@@ -76,3 +76,10 @@
     cursor: pointer;
     padding: 6px;
 }
+
+.dono-txt {
+    color: #cfcfcf;
+    font-size: 12px;
+    max-width: 50%;
+    text-align: center;
+}
