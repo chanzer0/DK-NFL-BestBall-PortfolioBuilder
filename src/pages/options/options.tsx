@@ -44,6 +44,7 @@ const OptionsPage = () => {
 
     // Sync methods.
     const syncDKPortfolio = async () => {
+        setErrorMsg("");
         setInfoMsg(
             "Syncing DK Portfolio... Estimated wait time is about half a second per contest you've entered."
         );
@@ -135,7 +136,9 @@ const OptionsPage = () => {
                     <div className="explainer-text">
                         <ol>
                             <li>
-                                Begin by ensuring you are logged into DraftKings
+                                Begin by ensuring you are logged into
+                                DraftKings, and are not actively in a BestBall
+                                draft.
                             </li>
                             <li>
                                 If this is your first time using the extension,
