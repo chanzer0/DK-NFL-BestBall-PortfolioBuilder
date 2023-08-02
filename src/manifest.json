@@ -1,0 +1,24 @@
+{
+    "manifest_version": 3,
+    "version": "0.0.1",
+    "name": "Draftkings NFL Bestball Portfolio Builder",
+    "description": "A scraper tool used to build your NFL BestBall portfolio on DraftKings",
+    "options_page": "options.html",
+    "background": { "service_worker": "background.bundle.js" },
+    "action": {},
+    "icons": {
+        "128": "icon-128.png"
+    },
+    "web_accessible_resources": [
+        {
+            "resources": ["content.styles.css", "icon-128.png", "*.webp"],
+            "matches": []
+        }
+    ],
+    "permissions": ["storage"],
+    "host_permissions": [
+        "*://draftkings.com/*",
+        "*://api.draftkings.com/*",
+        "*://www.draftkings.com/*"
+    ]
+}

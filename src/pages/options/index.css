@@ -1,0 +1,15 @@
+body {
+    background-color: #131616;
+    height: 100vh;
+    margin: 0;
+    font-family: "Open Sans", sans-serif;
+}
+
+#app-container {
+    height: 100%;
+}
+
+/* 
+#131616
+#f3f3f9
+#c2a90e */

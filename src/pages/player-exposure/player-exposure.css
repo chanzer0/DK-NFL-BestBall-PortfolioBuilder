@@ -1,0 +1,194 @@
+.playerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.playerExposureHeader {
+    width: 100%;
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    display: grid;
+    align-items: center;
+    padding: 12px 0;
+    grid-template-columns: 150px 150px 75px 75px 100px 100px 100px 150px;
+}
+
+.playerExposureHeader > div {
+    text-align: center;
+    cursor: pointer;
+}
+
+.playerExposureContainer {
+    width: 100%;
+    color: white;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 150px 150px 75px 75px 100px 100px 100px 150px;
+}
+
+.playerExposureContainer > div {
+    text-align: center;
+}
+
+.ari {
+    border: 2px solid #98233f;
+    border-radius: 50px;
+}
+
+.atl {
+    border: 2px solid #a51b33;
+    border-radius: 50px;
+}
+
+.bal {
+    border: 2px solid #251875;
+    border-radius: 50px;
+}
+
+.buf {
+    border: 2px solid #00338d;
+    border-radius: 50px;
+}
+
+.car {
+    border: 2px solid #0085ca;
+    border-radius: 50px;
+}
+
+.chi {
+    border: 2px solid #0b162a;
+    border-radius: 50px;
+}
+
+.cin {
+    border: 2px solid #fb4f14;
+    border-radius: 50px;
+}
+
+.cle {
+    border: 2px solid #311d00;
+    border-radius: 50px;
+}
+
+.dal {
+    border: 2px solid #041e42;
+    border-radius: 50px;
+}
+
+.den {
+    border: 2px solid #fb4f14;
+    border-radius: 50px;
+}
+
+.det {
+    border: 2px solid #006db0;
+    border-radius: 50px;
+}
+
+.gb {
+    border: 2px solid #203731;
+    border-radius: 50px;
+}
+
+.hou {
+    border: 2px solid #03202f;
+    border-radius: 50px;
+}
+
+.ind {
+    border: 2px solid #002c5f;
+    border-radius: 50px;
+}
+
+.jax {
+    border: 2px solid #006778;
+    border-radius: 50px;
+}
+
+.kc {
+    border: 2px solid #e31837;
+    border-radius: 50px;
+}
+
+.lac {
+    border: 2px solid #0073cf;
+    border-radius: 50px;
+}
+
+.lar {
+    border: 2px solid #ffc100;
+    border-radius: 50px;
+}
+
+.lv {
+    border: 2px solid #000000;
+    border-radius: 50px;
+}
+
+.mia {
+    border: 2px solid #008e97;
+    border-radius: 50px;
+}
+
+.min {
+    border: 2px solid #4f2683;
+    border-radius: 50px;
+}
+
+.ne {
+    border: 2px solid #002244;
+    border-radius: 50px;
+}
+
+.no {
+    border: 2px solid #9f8958;
+    border-radius: 50px;
+}
+.nyg {
+    border: 2px solid #0b2265;
+    border-radius: 50px;
+}
+
+.nyj {
+    border: 2px solid #125740;
+    border-radius: 50px;
+}
+
+.phi {
+    border: 2px solid #004c54;
+    border-radius: 50px;
+}
+
+.pit {
+    border: 2px solid #ffb612;
+    border-radius: 50px;
+}
+
+.sea {
+    border: 2px solid #002244;
+    border-radius: 50px;
+}
+
+.sf {
+    border: 2px solid #ab0001;
+    border-radius: 50px;
+}
+
+.tb {
+    border: 2px solid #a71931;
+    border-radius: 50px;
+}
+
+.ten {
+    border: 2px solid #4c92dd;
+    border-radius: 50px;
+}
+
+.was {
+    border: 2px solid #5a1315;
+    border-radius: 50px;
+}
