@@ -127,9 +127,14 @@ const syncDKBestball = async (callback) => {
             };
             returnData.push(bestballDraftItem);
         }
-        callback({ message: "success", data: returnData });
-    } catch {
-        console.log("i smell like beeeeef");
-        callback({ message: "error" });
+        callback({
+            message: `Successfully fetched ${enteredContests.length} bestball contests for user: ${user.userName}`,
+            data: returnData,
+        });
+    } catch (err) {
+        callback({
+            message: `An error occurred while syncing your portfolio: ${err}`,
+            data: null,
+        });
     }
 };

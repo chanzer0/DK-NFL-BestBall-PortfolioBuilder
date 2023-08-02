@@ -38,20 +38,31 @@ const OptionsPage = () => {
     const [userContests, setUserContests] = useState<UserEnteredContest[]>([]);
     const [page, setPage] = useState<string>("sync");
 
+    const [successMsg, setSuccessMsg] = useState<string>("");
+    const [infoMsg, setInfoMsg] = useState<string>("");
+    const [errorMsg, setErrorMsg] = useState<string>("");
+
     // Sync methods.
     const syncDKPortfolio = async () => {
-        console.log("syncing dk portfolio");
+        setInfoMsg(
+            "Syncing DK Portfolio... Estimated wait time is about half a second per contest you've entered."
+        );
         const resp = await chrome.runtime.sendMessage({
             message: "sync_dk_bestball",
         });
         console.log({ resp });
-
-        if (resp.message === "success") {
+        setInfoMsg("");
+        if (resp.message.toLowerCase().indexOf("success") >= 0) {
             setUserContests(resp.data);
             saveToJSONFile(
                 resp.data,
                 `dk_bestball_portfolio_${moment().format()}.json`
             );
+            setSuccessMsg(resp.message);
+            setErrorMsg("");
+        } else {
+            setSuccessMsg("");
+            setErrorMsg(resp.message);
         }
     };
 
@@ -79,6 +90,9 @@ const OptionsPage = () => {
                 console.log({ data });
 
                 setUserContests(data);
+                setSuccessMsg(
+                    `Successfully loaded ${data.length} contest from your file!`
+                );
             };
 
             reader.readAsText(file);
@@ -151,6 +165,15 @@ const OptionsPage = () => {
                             </li>
                         </ol>
                     </div>
+                    {successMsg.length > 0 && (
+                        <div className="success-msg">{successMsg}</div>
+                    )}
+                    {infoMsg.length > 0 && (
+                        <div className="info-msg">{infoMsg}</div>
+                    )}
+                    {errorMsg.length > 0 && (
+                        <div className="error-msg">{errorMsg}</div>
+                    )}
                     <div
                         className="sync-button"
                         onClick={() => syncDKPortfolio()}
@@ -173,6 +196,7 @@ const OptionsPage = () => {
                     >
                         Upload from .JSON
                     </div>
+
                     <small className="dono-txt">
                         Are you finding value in this tool? It's made possible
                         by the generosity of users like you. If you're able to,

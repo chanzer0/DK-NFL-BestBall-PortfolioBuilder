@@ -83,3 +83,42 @@
     max-width: 50%;
     text-align: center;
 }
+
+.success-msg {
+    font-size: 12px;
+    border: 1px solid #28a745;
+    color: #28a745;
+    background-color: #092710;
+    border-radius: 20px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.info-msg {
+    font-size: 12px;
+    border: 1px solid #17a2b8;
+    color: #17a2b8;
+    background-color: #09242a;
+    border-radius: 20px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.error-msg {
+    font-size: 12px;
+    border: 1px solid #dc3545;
+    color: #dc3545;
+    background-color: #2a0a0a;
+    border-radius: 20px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
