@@ -42,12 +42,12 @@ const syncDKBestball = async (callback) => {
             const contestDetailUrl = `https://api.draftkings.com/contests/v1/contests/${contest.contestKey}?format=json`;
             const contestDetailResp = await fetch(contestDetailUrl);
             const contestDetail = await contestDetailResp.json();
-            console.log({ contestDetail });
+            // console.log({ contestDetail });
 
             const draftStatusUrl = `https://api.draftkings.com/drafts/v1/${contest.contestKey}/entries/${contest.entryKey}/draftStatus?format=json`;
             const draftStatusResp = await fetch(draftStatusUrl);
             const draftStatus = await draftStatusResp.json();
-            console.log({ draftStatus });
+            // console.log({ draftStatus });
 
             // This is not a bestball contest
             if (draftStatus.errorStatus != null) {
@@ -79,6 +79,12 @@ const syncDKBestball = async (callback) => {
             let filteredPlayers = players.filter((player) =>
                 userDraftboard.hasOwnProperty(player.draftableId)
             );
+
+            // console.log({ filteredPlayers });
+
+            if (filteredPlayers == null || filteredPlayers.length < 20) {
+                continue;
+            }
 
             Object.keys(userDraftboard).forEach((playerDraftableId) => {
                 var draftBoardPlayer = userDraftboard[playerDraftableId];
@@ -128,7 +134,7 @@ const syncDKBestball = async (callback) => {
             returnData.push(bestballDraftItem);
         }
         callback({
-            message: `Successfully fetched ${enteredContests.length} bestball contests for user: ${user.userName}`,
+            message: `Successfully fetched ${returnData.length} bestball contests for user: ${user.userName}`,
             data: returnData,
         });
     } catch (err) {

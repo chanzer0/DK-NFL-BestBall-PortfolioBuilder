@@ -137,8 +137,7 @@ const OptionsPage = () => {
                         <ol>
                             <li>
                                 Begin by ensuring you are logged into
-                                DraftKings, and are not actively in a BestBall
-                                draft.
+                                DraftKings.
                             </li>
                             <li>
                                 If this is your first time using the extension,
