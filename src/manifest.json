@@ -19,6 +19,7 @@
     "host_permissions": [
         "*://draftkings.com/*",
         "*://api.draftkings.com/*",
+        "*://api.draftkings.co.uk/*",
         "*://www.draftkings.com/*"
     ]
 }

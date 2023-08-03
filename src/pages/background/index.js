@@ -24,14 +24,28 @@ const syncDKBestball = async (callback) => {
 
     let returnData = [];
 
+    let domain = "com";
+
     try {
-        const userResp = await fetch(
+        let userResp = await fetch(
             "https://api.draftkings.com/sites/US-DK/dashes/v1/dashes/siteNav/users/me.json?format=json&includeTickets=true"
         );
-        const user = await userResp.json();
+        let user = await userResp.json();
+
+        // handle gb/uk users
+        if (
+            user.errorStatus != null &&
+            user.errorStatus.developerMessage === "Unauthorized"
+        ) {
+            userResp = await fetch(
+                "https://api.draftkings.co.uk/sites/GB-DK/dashes/v1/dashes/siteNav/users/me.json?format=json&includeTickets=true"
+            );
+            user = await userResp.json();
+            domain = "co.uk";
+        }
 
         const userProfileResp = await fetch(
-            `https://api.draftkings.com/contests/v1/users/${user.userName}?format=json`
+            `https://api.draftkings.${domain}/contests/v1/users/${user.userName}?format=json`
         );
         const userProfile = await userProfileResp.json();
 
@@ -39,12 +53,12 @@ const syncDKBestball = async (callback) => {
 
         let userKey = "";
         for (const contest of enteredContests) {
-            const contestDetailUrl = `https://api.draftkings.com/contests/v1/contests/${contest.contestKey}?format=json`;
+            const contestDetailUrl = `https://api.draftkings.${domain}/contests/v1/contests/${contest.contestKey}?format=json`;
             const contestDetailResp = await fetch(contestDetailUrl);
             const contestDetail = await contestDetailResp.json();
             // console.log({ contestDetail });
 
-            const draftStatusUrl = `https://api.draftkings.com/drafts/v1/${contest.contestKey}/entries/${contest.entryKey}/draftStatus?format=json`;
+            const draftStatusUrl = `https://api.draftkings.${domain}/drafts/v1/${contest.contestKey}/entries/${contest.entryKey}/draftStatus?format=json`;
             const draftStatusResp = await fetch(draftStatusUrl);
             const draftStatus = await draftStatusResp.json();
             // console.log({ draftStatus });
@@ -58,7 +72,7 @@ const syncDKBestball = async (callback) => {
                 (userInQuestion) => userInQuestion.displayName === user.userName
             ).userKey;
 
-            const draftablesUrl = `https://api.draftkings.com/draftgroups/v1/draftgroups/${contest.draftGroupId}/draftables?format=json`;
+            const draftablesUrl = `https://api.draftkings.${domain}/draftgroups/v1/draftgroups/${contest.draftGroupId}/draftables?format=json`;
             const draftablesResp = await fetch(draftablesUrl);
             const draftables = await draftablesResp.json();
             // console.log({ draftables });
