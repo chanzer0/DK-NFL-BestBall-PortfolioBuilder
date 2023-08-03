@@ -141,6 +141,7 @@ const PlayerExposureView = ({
             </div>
             {playerExposures != null &&
                 Object.keys(playerExposures).map((playerName) => {
+                    console.log(playerExposures[playerName]);
                     return (
                         <div
                             className={`playerExposureContainer ${playerExposures[
@@ -177,9 +178,11 @@ const PlayerExposureView = ({
                                 ${playerExposures[playerName].entryFees}
                             </div>
                             <div className="playerExposureAverageAdp">
-                                {playerExposures[playerName].averageAdp.toFixed(
-                                    2
-                                )}
+                                {playerExposures[playerName].averageAdp != null
+                                    ? playerExposures[
+                                          playerName
+                                      ].averageAdp.toFixed(2)
+                                    : "N/A"}
                             </div>
                             <div className="playerExposureMyAverageAdp">
                                 {playerExposures[
