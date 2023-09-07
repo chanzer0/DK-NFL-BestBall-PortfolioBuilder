@@ -141,7 +141,6 @@ const PlayerExposureView = ({
             </div>
             {playerExposures != null &&
                 Object.keys(playerExposures).map((playerName) => {
-                    console.log(playerExposures[playerName]);
                     return (
                         <div
                             className={`playerExposureContainer ${playerExposures[
@@ -184,20 +183,24 @@ const PlayerExposureView = ({
                                       ].averageAdp.toFixed(2)
                                     : "N/A"}
                             </div>
-                            <div className="playerExposureMyAverageAdp">
-                                {playerExposures[
-                                    playerName
-                                ].myAverageAdp.toFixed(2)}{" "}
-                                (
-                                {playerExposures[playerName].myAverageAdp -
-                                    playerExposures[playerName].averageAdp >
-                                    0 && "+"}
-                                {(
-                                    playerExposures[playerName].myAverageAdp -
-                                    playerExposures[playerName].averageAdp
-                                ).toFixed(2)}
-                                )
-                            </div>
+                            {playerExposures[playerName].myAverageAdp !=
+                                null && (
+                                <div className="playerExposureMyAverageAdp">
+                                    {playerExposures[
+                                        playerName
+                                    ].myAverageAdp.toFixed(2)}{" "}
+                                    (
+                                    {playerExposures[playerName].myAverageAdp -
+                                        playerExposures[playerName].averageAdp >
+                                        0 && "+"}
+                                    {(
+                                        playerExposures[playerName]
+                                            .myAverageAdp -
+                                        playerExposures[playerName].averageAdp
+                                    ).toFixed(2)}
+                                    )
+                                </div>
+                            )}
                         </div>
                     );
                 })}

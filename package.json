@@ -1,6 +1,6 @@
 {
     "name": "dk-nfl-bestball-portfolio-builder",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "A scraper tool used to build your NFL BestBall portfolio on DraftKings.",
     "license": "MIT",
     "repository": {

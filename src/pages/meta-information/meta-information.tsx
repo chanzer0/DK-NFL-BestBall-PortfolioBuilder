@@ -476,32 +476,33 @@ const MetaInformationView = ({
                     };
                 }
 
-                let qbTeam = sortedPlayers.find(
+                let qbs = sortedPlayers.filter(
                     (item) => item.position === "QB"
-                )!.team;
-                let numStack = sortedPlayers.filter(
-                    (item) => item.team === qbTeam
-                ).length;
-                if (numStack > 4) {
-                    numStack = 4;
-                }
-                if (metaInformation.teamStacks.hasOwnProperty(qbTeam)) {
-                    metaInformation.teamStacks[qbTeam].totalDrafts += 1;
-                    metaInformation.teamStacks[qbTeam][numStack] += 1;
-                } else {
-                    metaInformation.teamStacks[qbTeam] = {
-                        totalDrafts: 1,
-                        0: 0,
-                        1: 0,
-                        2: 0,
-                        3: 0,
-                        4: 0,
-                    };
-                    metaInformation.teamStacks[qbTeam][numStack] += 1;
-                }
+                );
+                qbs.forEach((qb) => {
+                    let numStack = sortedPlayers.filter(
+                        (item) => item.team === qb.team
+                    ).length;
+                    if (numStack > 4) {
+                        numStack = 4;
+                    }
+                    if (metaInformation.teamStacks.hasOwnProperty(qb.team)) {
+                        metaInformation.teamStacks[qb.team].totalDrafts += 1;
+                        metaInformation.teamStacks[qb.team][numStack] += 1;
+                    } else {
+                        metaInformation.teamStacks[qb.team] = {
+                            totalDrafts: 1,
+                            0: 0,
+                            1: 0,
+                            2: 0,
+                            3: 0,
+                            4: 0,
+                        };
+                        metaInformation.teamStacks[qb.team][numStack] += 1;
+                    }
+                });
             });
             metaInformation.rosterConstruction = rosterConstruction;
-            console.log({ metaInformation });
             setMetaInformation(metaInformation);
         }
     }, [userContests]);
@@ -612,7 +613,7 @@ const MetaInformationView = ({
                             {Object.keys(metaInformation.teamStacks).map(
                                 (team) => {
                                     return (
-                                        <div className="stackGrid">
+                                        <div className="stackGrid" key={team}>
                                             <div
                                                 style={{ textAlign: "center" }}
                                             >

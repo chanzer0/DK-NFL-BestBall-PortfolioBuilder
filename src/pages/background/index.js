@@ -31,6 +31,7 @@ const syncDKBestball = async (callback) => {
             "https://api.draftkings.com/sites/US-DK/dashes/v1/dashes/siteNav/users/me.json?format=json&includeTickets=true"
         );
         let user = await userResp.json();
+        console.log({ user });
 
         // handle gb/uk users
         if (
@@ -48,6 +49,7 @@ const syncDKBestball = async (callback) => {
             `https://api.draftkings.${domain}/contests/v1/users/${user.userName}?format=json`
         );
         const userProfile = await userProfileResp.json();
+        console.log({ userProfile });
 
         const enteredContests = userProfile.userProfile.enteredContests;
 
@@ -56,12 +58,12 @@ const syncDKBestball = async (callback) => {
             const contestDetailUrl = `https://api.draftkings.${domain}/contests/v1/contests/${contest.contestKey}?format=json`;
             const contestDetailResp = await fetch(contestDetailUrl);
             const contestDetail = await contestDetailResp.json();
-            // console.log({ contestDetail });
+            console.log({ contestDetail });
 
             const draftStatusUrl = `https://api.draftkings.${domain}/drafts/v1/${contest.contestKey}/entries/${contest.entryKey}/draftStatus?format=json`;
             const draftStatusResp = await fetch(draftStatusUrl);
             const draftStatus = await draftStatusResp.json();
-            // console.log({ draftStatus });
+            console.log({ draftStatus });
 
             // This is not a bestball contest
             if (draftStatus.errorStatus != null) {
@@ -75,7 +77,7 @@ const syncDKBestball = async (callback) => {
             const draftablesUrl = `https://api.draftkings.${domain}/draftgroups/v1/draftgroups/${contest.draftGroupId}/draftables?format=json`;
             const draftablesResp = await fetch(draftablesUrl);
             const draftables = await draftablesResp.json();
-            // console.log({ draftables });
+            console.log({ draftables });
 
             // Array of dicts: [{draftableId: 27770201, overallSelectionNumber: 1, playerId: 1069535, roundNumber: 1, selectionNumber: 1, teamPositionId: 3, userKey: <GUID FOR USER>}, ...]
             let draftBoard = draftStatus.draftBoard;
